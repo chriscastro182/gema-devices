@@ -18,7 +18,7 @@
       </div>
       <span class="nav-link-text ms-1">Dashboards</span>
     </a>
-    <div class="collapse  show " id="dashboardsExamples">
+    <div class="collapse  show " id="dashboardsExamples" [class.show]="isActive('/home') || isActive('/smart-home')">
       <ul class="nav ms-4 ps-3">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" [routerLink]="['/home']">
@@ -58,7 +58,7 @@
       </div>
       <span class="nav-link-text ms-1">Modulos</span>
     </a>
-    <div class="collapse " id="pagesExamples">
+    <div class="collapse " id="pagesExamples" [class.show]="isActive('/profile/profile') || isActive('/user/user-index') || isActive('/user/create')">
       <ul class="nav ms-4 ps-3">
         <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
