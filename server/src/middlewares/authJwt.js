@@ -35,7 +35,7 @@ export const isLead = async (req, res, next) => {
             return
         } 
     }
-    return res.status(403).json({messager: "Lead Role required"})
+    return res.status(403).json({message: "Role Unauthorized"})
 }
 
 export const isAdmin = async (req, res, next) => {
@@ -50,5 +50,5 @@ export const isAdmin = async (req, res, next) => {
             return
         } 
     }
-    return res.status(403).json({messager: "Admin Role required"})
+    return res.status(403).json({message: "Role not authorized "})
 }

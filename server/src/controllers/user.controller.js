@@ -32,7 +32,8 @@ export const createUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
 
-    const users = await User.find().populate("roles").populate("empresa")
+    const users = await User.find({}, { password: 0 }).populate("roles");
+
 
     res.status(200).json(users)
 }
@@ -40,7 +41,7 @@ export const getUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
 
-    const user = await User.findById(req.params.userId, {password: 0}).populate("roles").populate("empresa")
+    const user = await User.findById(req.params.userId, {password: 0}).populate("roles")
 
     console.log(user);
     res.json(user)

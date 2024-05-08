@@ -4,9 +4,10 @@ const router = Router()
 import * as userController from "../controllers/user.controller"
 import { authJwt, verifySignUp } from '../middlewares'
 
-router.get('/',
+/* router.get('/',
     [authJwt.verifyToken, authJwt.isLead], 
-    userController.getUsers)
+    userController.getUsers) */
+router.get('/', authJwt.verifyToken, userController.getUsers)
 
 router.post('/',
     [authJwt.verifyToken, verifySignUp.checkDuplicateUser,authJwt.isAdmin, authJwt.isLead],
