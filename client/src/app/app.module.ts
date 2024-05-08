@@ -16,6 +16,7 @@ import { AdminLayoutComponent } from './components/templates/admin-layout/admin-
 import { AuthLayoutComponent } from './components/templates/auth-layout/auth-layout.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing';
+import { UserComponent } from './components/user/user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppRoutes } from './app-routing';
     NavbarComponent,
     FooterComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
