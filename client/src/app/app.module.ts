@@ -12,23 +12,26 @@ import { SmartHomeComponent } from './components/dashboard/smart-home/smart-home
 import { UserIndexComponent } from './components/user/user-index/user-index.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { AdminLayoutComponent } from './components/templates/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from './components/templates/auth-layout/auth-layout.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutes } from './app-routing';
+import { UserComponent } from './components/user/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent,
-    RegisterComponent,
-    HomeComponent,
-    SmartHomeComponent,
-    UserIndexComponent,
-    ProfileComponent,
-    CreateUserComponent
+    AdminLayoutComponent,
+    AuthLayoutComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(AppRoutes,{
+      useHash: false
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
