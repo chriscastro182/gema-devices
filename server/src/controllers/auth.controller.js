@@ -4,7 +4,7 @@ import config from '../config'
 import Role from '../models/Role'
 
 export const signIn = async (req, res) => {
-    //console.log(req.body);
+    console.log(req.body);
     const userFound = await User.findOne({email: req.body.email}).populate("roles")
 
     if (!userFound) return res.status(400).json({message: "User not found"})
@@ -24,7 +24,7 @@ export const signIn = async (req, res) => {
 
 export const signUp = async (req, res) => {
     const {name, lastname, email, password, roles} = req.body;
-
+    console.log(req.body)
     const userFound = User.find({email})
 
     const newUser = new User({
@@ -43,12 +43,14 @@ export const signUp = async (req, res) => {
     }
 
     const savedUser = await newUser.save()
-
+    console.log('user: ',savedUser);
     const token = jwt.sign({id: savedUser._id}, config.SECRET,{
         expiresIn: 7200 // 2 hours
     })
 
-    res.json(token)
+    console.log( token )
+
+    res.json( token )
 }
 
 export const userIdsByToken = async (req, res) => {

@@ -20,10 +20,6 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  empresa: {
-    ref: "Enterprise",
-    type: Schema.Types.ObjectId
-  },
   roles: [{
     ref: "Role",
     type: Schema.Types.ObjectId
@@ -36,7 +32,7 @@ const userSchema = new Schema({
 
 userSchema.statics.encryptPass = async (password) => {
   const salt = await bcrypt.genSalt(11)
-  //console.log(salt);
+  console.log(salt);
   return await bcrypt.hash(password, salt)
 }
 
