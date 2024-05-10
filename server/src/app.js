@@ -7,8 +7,8 @@ import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
 
 const app = express()
-//const cors = requre('cors')
-//createRoles();
+//const cors = requre('cors')\
+
 
 app.set('pkg', pkg)
 
