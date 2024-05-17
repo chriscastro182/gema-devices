@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AuthRoutes } from './auth.routing';
 import { LoginComponent } from '../components/auth/login/login.component';
 import { RegisterComponent } from '../components/auth/register/register.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,6 +12,7 @@ import { RegisterComponent } from '../components/auth/register/register.componen
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(AuthRoutes),
   ]
 })

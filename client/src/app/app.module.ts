@@ -17,6 +17,7 @@ import { AuthLayoutComponent } from './components/templates/auth-layout/auth-lay
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing';
 import { UserComponent } from './components/user/user/user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserComponent } from './components/user/user/user.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: false
     }),
