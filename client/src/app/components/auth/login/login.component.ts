@@ -13,13 +13,19 @@ export class LoginComponent {
     lastname: '',
     email: '',
     createdAt: ''
-  }
+  };
+  loading:boolean = false;
 
 
 
   OnSubmit(){
     let { email, password } = this.Usuario;
     let loginRequest = { email, password };
+    this.loading = true;
+    setTimeout(() => {
+      
+      this.loading=false;
+    }, 2500);
 
     console.log(loginRequest);
   }
