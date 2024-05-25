@@ -34,13 +34,34 @@
                     <!-- <button type="submit" (click)="invertirNombre()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Invertir</button> -->
                   </div>
                 </form>
+
+                              
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">
                   ¿No tienes una cuenta?
-                  <a href="javascript:;" class="text-info text-gradient font-weight-bold">Regístrate</a>
+                  <a [routerLink]="['/auth/register']" class="text-info text-gradient font-weight-bold">Regístrate</a>
                 </p>
               </div>
+            </div>
+            <hr>
+            <div *ngIf="errorNotification" class="alert alert-danger text-light text-center alert-dismissible fade show" role="alert">
+                <span class="alert-icon"><i class="ni ni-send"></i></span>
+                <span class="alert-text">
+                  {{ serverMessage }}
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>          
+            <div *ngIf="warnNotification" class="alert alert-warning text-light text-center alert-dismissible fade show" role="alert">
+                <span class="alert-icon"><i class="ni ni-send"></i></span>
+                <span class="alert-text">
+                  {{ serverMessage }}
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
           </div>
           <div class="col-6 d-lg-flex d-none bg-gradient-primary h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">

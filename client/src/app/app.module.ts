@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing';
 import { UserComponent } from './components/user/user/user.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: false
     }),
