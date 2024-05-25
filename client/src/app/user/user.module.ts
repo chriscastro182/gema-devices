@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { UserRoutes } from './user.routing';
 import { UserIndexComponent } from '../components/user/user-index/user-index.component';
 import { CreateUserComponent } from '../components/user/create-user/create-user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
+import { AuthGuard } from '../guards/auth-guard.guard';
 
 
 
@@ -11,7 +14,9 @@ import { CreateUserComponent } from '../components/user/create-user/create-user.
   declarations: [UserIndexComponent, CreateUserComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild(UserRoutes),
-  ]
+  ],
+  providers: [AuthService, AuthGuard]
 })
 export class UserModule { }
