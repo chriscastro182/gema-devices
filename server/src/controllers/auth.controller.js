@@ -7,11 +7,11 @@ export const signIn = async (req, res) => {
     console.log(req.body);
     const userFound = await User.findOne({email: req.body.email}).populate("roles")
 
-    if (!userFound) return res.status(400).json({message: "User not found"})
+    if (!userFound) return res.status(404).json({message: 'Usuario no registrado'})
 
     const matchPass = await User.comparePass(req.body.password, userFound.password)
 
-    if(!matchPass) return res.status(401).json({token:null, message: 'Invalid password'})
+    if(!matchPass) return res.status(401).json({token:null, message: 'correo o contraseña incorrectos'})
 
     const token = jwt.sign({id: userFound._id}, config.SECRET,{
         expiresIn: 7200 // 2 hours
@@ -26,6 +26,8 @@ export const signUp = async (req, res) => {
     const {name, lastname, email, password, roles} = req.body;
     console.log(req.body)
     const userFound = User.find({email})
+
+    if(userFound) return res.status(400).json({message: "Usuario ya registrado"})
 
     const newUser = new User({
         name,
@@ -50,7 +52,7 @@ export const signUp = async (req, res) => {
 
     console.log( token )
 
-    res.json( token )
+    res.status(201).json( token )
 }
 
 export const userIdsByToken = async (req, res) => {

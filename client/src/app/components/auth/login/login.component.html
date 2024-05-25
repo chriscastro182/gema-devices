@@ -15,24 +15,53 @@
                     <input type="email" [(ngModel)]="Usuario.email" class="form-control form-control-lg" placeholder="Email" name="email">
                   </div>
                   <div class="mb-3">
-                    <input type="password" [(ngModel)]="Usuario.password" class="form-control" name="password" >
+                    <input type="password" [(ngModel)]="Usuario.password" class="form-control" name="password" placeholder="*************" >
                   </div>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Recordarme</label>
                   </div>
                   <div class="text-center">
-                    <button type="submit" (click)="OnSubmit()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Iniciar Sesión</button>
+                    <ng-container *ngIf="!loading; else spinner">
+                      <button type="submit" (click)="OnSubmit()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Iniciar Sesión</button>
+                    </ng-container>
+                    <ng-template #spinner>
+                      <button class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" type="button" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Iniciando sesión...
+                      </button>
+                    </ng-template>
                     <!-- <button type="submit" (click)="invertirNombre()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Invertir</button> -->
                   </div>
                 </form>
+
+                              
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">
                   ¿No tienes una cuenta?
-                  <a href="javascript:;" class="text-info text-gradient font-weight-bold">Regístrate</a>
+                  <a [routerLink]="['/auth/register']" class="text-info text-gradient font-weight-bold">Regístrate</a>
                 </p>
               </div>
+            </div>
+            <hr>
+            <div *ngIf="errorNotification" class="alert alert-danger text-light text-center alert-dismissible fade show" role="alert">
+                <span class="alert-icon"><i class="ni ni-send"></i></span>
+                <span class="alert-text">
+                  {{ serverMessage }}
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>          
+            <div *ngIf="warnNotification" class="alert alert-warning text-light text-center alert-dismissible fade show" role="alert">
+                <span class="alert-icon"><i class="ni ni-send"></i></span>
+                <span class="alert-text">
+                  {{ serverMessage }}
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
           </div>
           <div class="col-6 d-lg-flex d-none bg-gradient-primary h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
@@ -44,7 +73,27 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>      
+
+      <!-- <div class="row">
+        <div class="spinner-container">
+          <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-light" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div> -->
     </div>
   </section>
 </main>
