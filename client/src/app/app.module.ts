@@ -18,7 +18,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing';
 import { UserComponent } from './components/user/user/user.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
       useHash: false
     }),
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

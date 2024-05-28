@@ -25,9 +25,6 @@ export const signIn = async (req, res) => {
 export const signUp = async (req, res) => {
     const {name, lastname, email, password, roles} = req.body;
     console.log(req.body)
-    const userFound = User.find({email})
-
-    if(userFound) return res.status(400).json({message: "Usuario ya registrado"})
 
     const newUser = new User({
         name,
@@ -45,6 +42,9 @@ export const signUp = async (req, res) => {
     }
 
     const savedUser = await newUser.save()
+    if (!savedUser) {
+        return res.status(500).json({message: "Error al registrar el usuario"})
+    }
     console.log('user: ',savedUser);
     const token = jwt.sign({id: savedUser._id}, config.SECRET,{
         expiresIn: 7200 // 2 hours
@@ -60,7 +60,7 @@ export const userIdsByToken = async (req, res) => {
         const token = req.headers["x-access-token"]
         let idClient, idTecnico;
         
-        if(!token) return res.status(403).json({message: "No Token provided"})
+        if(!token) return res.status(403).json({message: "Token no proporcionado"})
         
         const decoded = jwt.verify(token, config.SECRET)
         req.userId = decoded.id;
@@ -68,7 +68,7 @@ export const userIdsByToken = async (req, res) => {
     
         const user = await User.findById(req.userId, {password: 0})
     
-        if(!user) return res.status(404).json({message: "No user found"})
+        if(!user) return res.status(404).json({message: "Usuario no encontrado"})
 
 
         return res.status(200).json({idUser: user._id})
@@ -82,7 +82,7 @@ export const isAdminByToken = async (req, res) => {
     try {
         const token = req.headers["x-access-token"]
 
-        if(!token) return res.status(403).json({message: "No Token provided"})
+        if(!token) return res.status(403).json({message: "Token no proporcionado"})
         
         const decoded = jwt.verify(token, config.SECRET)
         req.userId = decoded.id;

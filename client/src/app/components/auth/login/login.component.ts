@@ -11,10 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   Usuario:User = {
     name: '',
-    id: 0,
+    _id: '',
     lastname: '',
     email: '',
-    createdAt: ''
+    createdAt: '',
+    roles: [ {rol:'', permissions:[]}]
   };
   serverMessage: string = '';
   loading:boolean = false;
