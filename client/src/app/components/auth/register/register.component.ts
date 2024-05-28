@@ -16,7 +16,11 @@ export class RegisterComponent {
     password:'',
     id:0,
     createdAt: new Date().toISOString()
-  }
+  };
+  serverMessage: string = '';
+  register:boolean = false;
+  warnNotification:boolean = false;
+  errorNotification:boolean = false;
 
   constructor(private _authService : AuthService, private _router : Router){
 
@@ -31,7 +35,7 @@ export class RegisterComponent {
     let { email, password, name, lastname } = this.Usuario;
 
     let requestUser = { email, password, name, lastname };
-    
+    this.register = true;
     
     this._authService.signUp(requestUser).subscribe(
       res => {
@@ -43,8 +47,26 @@ export class RegisterComponent {
         this._router.navigate(['/smart-home'])
       },
       err => {
+        this.serverMessage = err.error.message;          
+          this.register=false;
+          
+          switch (err.status) {
+            case 404:
+                this.errorNotification = true;
+              break;
+            case 400:
+                this.warnNotification = true;
+              break;
+            default:              
+              this.errorNotification = true;
+              this.serverMessage = 'Error desconocido';
+              break;
+          }       
         console.error(err)
-        // parar el spinner
+        setTimeout(() => {
+          this.warnNotification = false;
+          this.errorNotification = false;
+        }, 10000);
       }
     )
 
