@@ -1,1 +1,90 @@
-<p>register works!</p>
+
+<main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+              <div class="card card-plain">
+                <div class="card-header pb-3 text-left">
+                  <h4 class="font-weight-bolder">Regístrate</h4>
+                  <p class="mb-0">Introduzca su correo electrónico y contraseña para registrarse</p>
+                </div>
+                <div class="card-body pb-3">
+                  <form role="form">
+                    <label>Nombre</label>
+                    <div class="mb-3">
+                      <input [(ngModel)]="Usuario.name" type="text" name="name" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                    </div>
+                    <label>Apellido</label>
+                    <div class="mb-3">
+                      <input [(ngModel)]="Usuario.lastname" type="text" name="lastname" class="form-control" placeholder="Apellido" aria-label="Apellido">
+                    </div>
+                    <label>Correo Electrónico</label>
+                    <div class="mb-3">
+                      <input [(ngModel)]="Usuario.email" type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <label>Contraseña</label>
+                    <div class="mb-3">
+                      <input [(ngModel)]="Usuario.password" class="form-control" name="password" type="password" value="password" id="example-password-input">
+                    </div>
+                    <div class="form-check form-check-info text-left">
+                     <!--  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Acepto los <a href="../../../pages/privacy.html" class="text-dark font-weight-bolder">Términos y Condiciones</a>
+                      </label> -->
+                    </div>
+                    <div class="text-center">
+                      <ng-container *ngIf="!register; else spinner">
+                        <button type="submit" (click)="registrar()" class="btn btn-lg bg-gradient-info btn-lg w-100 mt-4 mb-0">Regístrate</button>
+                      </ng-container>
+                      <ng-template #spinner>
+                        <button (click)="registrar()" type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Creando Usuario...
+                      </button>
+                      </ng-template>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer text-center pt-0 px-sm-4 px-1">
+                  <p class="mb-4 mx-auto">
+                    ¿Ya tienes cuenta?
+                    <a [routerLink]="['/auth/login']" class="text-primary text-gradient font-weight-bold">Iniciar Sesión</a>
+                  </p>
+                </div>
+                <hr>
+                <div *ngIf="warnNotification" class="alert alert-warning text-light text-center alert-dismissible fade show" role="alert">
+                  <span class="alert-icon"><i class="ni ni-send"></i></span>
+                  <span class="alert-text">
+                    {{ serverMessage }}
+                  </span>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div *ngIf="errorNotification" class="alert alert-danger text-light text-center alert-dismissible fade show" role="alert">
+                  <span class="alert-icon"><i class="ni ni-send"></i></span>
+                  <span class="alert-text">
+                    {{ serverMessage }}
+                  </span>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+               </div> 
+              </div>
+            </div>
+            <div class="col-6 d-lg-flex d-none bg-gradient-info h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+              <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+                <img src="../../../.../../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-4 start-0">
+                <div class="position-relative">
+                  <img class="max-width-500 w-100 position-relative z-index-2" src="../../.../../../assets/img/illustrations/LogoGema.png" alt="rocket">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

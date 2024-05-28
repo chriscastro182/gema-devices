@@ -18,21 +18,22 @@
       </div>
       <span class="nav-link-text ms-1">Dashboards</span>
     </a>
-    <div class="collapse  show " id="dashboardsExamples">
+    <div class="collapse  show " id="dashboardsExamples" [class.show]="isActive('/home') || isActive('/smart-home')">
       <ul class="nav ms-4 ps-3">
-        <li class="nav-item active">
-            <a class="nav-link active" [routerLink]="['/home']">
-              <span class="sidenav-mini-icon"> H</span>
-              <span class="sidenav-normal"> Home </span>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" [routerLink]="['/home']">
+                <span class="sidenav-mini-icon"> H</span>
+                <span class="sidenav-normal"> Home </span>
             </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link active" [routerLink]="['/smart-home']">
-            <span class="sidenav-mini-icon"> S </span>
-            <span class="sidenav-normal"> Smart Home </span>
-          </a>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" [routerLink]="['/smart-home']">
+                <span class="sidenav-mini-icon"> S </span>
+                <span class="sidenav-normal"> Smart Home </span>
+            </a>
         </li>
-      </ul>
+    </ul>
+    
     </div>
   </li>
   <li class="nav-item mt-3">
@@ -57,7 +58,7 @@
       </div>
       <span class="nav-link-text ms-1">Modulos</span>
     </a>
-    <div class="collapse " id="pagesExamples">
+    <div class="collapse " id="pagesExamples" [class.show]="isActive('/profile/profile') || isActive('/user/user-index') || isActive('/user/create')">
       <ul class="nav ms-4 ps-3">
         <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
@@ -66,13 +67,13 @@
           </a>
           <div class="collapse " id="profileExample">
             <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link " [routerLink]="['/profile']">
-                  <span class="sidenav-mini-icon text-xs"> P </span>
-                  <span class="sidenav-normal"> Perfil </span>
-                </a>
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/profile/profile']">
+                      <span class="sidenav-mini-icon text-xs"> P </span>
+                      <span class="sidenav-normal"> Perfil </span>
+                  </a>
               </li>              
-            </ul>
+            </ul>          
           </div>
         </li>
         <li class="nav-item ">
@@ -82,126 +83,126 @@
           </a>
           <div class="collapse " id="usersExample">
             <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link " [routerLink]="['/users']">
-                  <span class="sidenav-mini-icon text-xs"> U </span>
-                  <span class="sidenav-normal"> Usuarios </span>
-                </a>
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/user/index']">
+                      <span class="sidenav-mini-icon text-xs"> U </span>
+                      <span class="sidenav-normal"> Usuarios </span>
+                  </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/create-users']">
-                  <span class="sidenav-mini-icon text-xs"> N </span>
-                  <span class="sidenav-normal"> Nuevo Usuario </span>
-                </a>
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/user/create']">
+                      <span class="sidenav-mini-icon text-xs"> N </span>
+                      <span class="sidenav-normal"> Nuevo Usuario </span>
+                  </a>
               </li>
-            </ul>
+            </ul>          
           </div>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#accountExample">
-            <span class="sidenav-mini-icon"> A </span>
-            <span class="sidenav-normal"> Account <b class="caret"></b></span>
-          </a>
-          <div class="collapse " id="accountExample">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/account/settings.html">
-                  <span class="sidenav-mini-icon text-xs"> S </span>
-                  <span class="sidenav-normal"> Settings </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/account/billing.html">
-                  <span class="sidenav-mini-icon text-xs"> B </span>
-                  <span class="sidenav-normal"> Billing </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/account/invoice.html">
-                  <span class="sidenav-mini-icon text-xs"> I </span>
-                  <span class="sidenav-normal"> Invoice </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/account/security.html">
-                  <span class="sidenav-mini-icon text-xs"> S </span>
-                  <span class="sidenav-normal"> Security </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#projectsExample">
-            <span class="sidenav-mini-icon"> P </span>
-            <span class="sidenav-normal"> Projects <b class="caret"></b></span>
-          </a>
-          <div class="collapse " id="projectsExample">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/projects/general.html">
-                  <span class="sidenav-mini-icon text-xs"> G </span>
-                  <span class="sidenav-normal"> General </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/projects/timeline.html">
-                  <span class="sidenav-mini-icon text-xs"> T </span>
-                  <span class="sidenav-normal"> Timeline </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../../pages/pages/projects/new-project.html">
-                  <span class="sidenav-mini-icon text-xs"> N </span>
-                  <span class="sidenav-normal"> New Project </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/pricing-page.html">
-            <span class="sidenav-mini-icon"> P </span>
-            <span class="sidenav-normal"> Pricing Page </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/messages.html">
-            <span class="sidenav-mini-icon"> M </span>
-            <span class="sidenav-normal"> Messages </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/rtl-page.html">
-            <span class="sidenav-mini-icon"> R </span>
-            <span class="sidenav-normal"> RTL </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/widgets.html">
-            <span class="sidenav-mini-icon"> W </span>
-            <span class="sidenav-normal"> Widgets </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/charts.html">
-            <span class="sidenav-mini-icon"> C </span>
-            <span class="sidenav-normal"> Charts </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/sweet-alerts.html">
-            <span class="sidenav-mini-icon"> S </span>
-            <span class="sidenav-normal"> Sweet Alerts </span>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link " href="../../pages/pages/notifications.html">
-            <span class="sidenav-mini-icon"> N </span>
-            <span class="sidenav-normal"> Notifications </span>
-          </a>
         </li>
       </ul>
+      <!-- <li class="nav-item ">
+        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#accountExample">
+          <span class="sidenav-mini-icon"> A </span>
+          <span class="sidenav-normal"> Account <b class="caret"></b></span>
+        </a>
+        <div class="collapse " id="accountExample">
+          <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/account/settings.html">
+                <span class="sidenav-mini-icon text-xs"> S </span>
+                <span class="sidenav-normal"> Settings </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/account/billing.html">
+                <span class="sidenav-mini-icon text-xs"> B </span>
+                <span class="sidenav-normal"> Billing </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/account/invoice.html">
+                <span class="sidenav-mini-icon text-xs"> I </span>
+                <span class="sidenav-normal"> Invoice </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/account/security.html">
+                <span class="sidenav-mini-icon text-xs"> S </span>
+                <span class="sidenav-normal"> Security </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#projectsExample">
+          <span class="sidenav-mini-icon"> P </span>
+          <span class="sidenav-normal"> Projects <b class="caret"></b></span>
+        </a>
+        <div class="collapse " id="projectsExample">
+          <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/projects/general.html">
+                <span class="sidenav-mini-icon text-xs"> G </span>
+                <span class="sidenav-normal"> General </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/projects/timeline.html">
+                <span class="sidenav-mini-icon text-xs"> T </span>
+                <span class="sidenav-normal"> Timeline </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../../pages/pages/projects/new-project.html">
+                <span class="sidenav-mini-icon text-xs"> N </span>
+                <span class="sidenav-normal"> New Project </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/pricing-page.html">
+          <span class="sidenav-mini-icon"> P </span>
+          <span class="sidenav-normal"> Pricing Page </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/messages.html">
+          <span class="sidenav-mini-icon"> M </span>
+          <span class="sidenav-normal"> Messages </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/rtl-page.html">
+          <span class="sidenav-mini-icon"> R </span>
+          <span class="sidenav-normal"> RTL </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/widgets.html">
+          <span class="sidenav-mini-icon"> W </span>
+          <span class="sidenav-normal"> Widgets </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/charts.html">
+          <span class="sidenav-mini-icon"> C </span>
+          <span class="sidenav-normal"> Charts </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/sweet-alerts.html">
+          <span class="sidenav-mini-icon"> S </span>
+          <span class="sidenav-normal"> Sweet Alerts </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="../../pages/pages/notifications.html">
+          <span class="sidenav-mini-icon"> N </span>
+          <span class="sidenav-normal"> Notifications </span>
+        </a>
+      </li> -->
     </div>
   </li>
   <li class="nav-item">
