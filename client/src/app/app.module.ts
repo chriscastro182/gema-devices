@@ -20,6 +20,9 @@ import { UserComponent } from './components/user/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { InfoModalComponent } from './components/user/info-modal/info-modal.component';
+import { EditModalComponent } from './components/user/edit-modal/edit-modal.component';
+import { DeleteModalComponent } from './components/user/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FooterComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserComponent
+    UserComponent,
+    InfoModalComponent,
+    EditModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
