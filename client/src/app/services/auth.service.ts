@@ -40,14 +40,20 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+
     this.router.navigate(['/auth/login']);
   }
   getSessionBehavior(err: number){
     if (err === 401) {
       this.logout()
     }
+    if (err === 403) {
+      this.logout()
+    }
     if (err==500){
-      this.router.navigate(['/']);
+      this.router.navigate(['/auth/login']);
     }
   }
 

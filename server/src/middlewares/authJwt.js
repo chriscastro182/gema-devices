@@ -8,19 +8,19 @@ export const verifyToken = async (req, res, next) => {
     try {
         const token = req.headers["x-access-token"]
         //console.log(token);
-        if(!token) return res.status(403).json({message: "No Token provided"})
+        if(!token) return res.status(403).json({message: "Token no proporcionado"})
     
         const decoded = jwt.verify(token, config.SECRET)
         req.userId = decoded.id;
     
         const user = await User.findById(req.userId, {password: 0})
     
-        if(!user) return res.status(404).json({message: "No user found"})
+        if(!user) return res.status(404).json({message: "Usuario inexistente"})
     
         next()
 
     } catch (error) {
-        return res.status(401).json({message: "Unauthorized"})
+        return res.status(401).json({message: "No autorizado"})
     }
 };
 

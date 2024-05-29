@@ -14,8 +14,9 @@ export class RegisterComponent {
     lastname: '',
     email: '',
     password:'',
-    id:0,
-    createdAt: new Date().toISOString()
+    _id:'',
+    createdAt: new Date().toISOString(),
+    roles: [{rol:'', permissions:[]}]
   };
   serverMessage: string = '';
   register:boolean = false;
@@ -51,7 +52,7 @@ export class RegisterComponent {
           this.register=false;
           
           switch (err.status) {
-            case 404:
+            case 500:
                 this.errorNotification = true;
               break;
             case 400:
