@@ -56,8 +56,8 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="../../pages/authentication/signin/illustration.html" class="nav-link text-body font-weight-bold px-0" target="_blank">
+            <li *ngIf="authService.loggedIn()" class="nav-item d-flex align-items-center">
+              <a style="cursor: pointer;" (click)="authService.logout()" class="nav-link text-body font-weight-bold px-0" target="_blank">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Cerrar Sesión</span>
               </a>

@@ -1,0 +1,30 @@
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-title-info">Información de usuario</h4>
+          <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Nombre: <b>{{ usuario?.name }}</b>.</p>
+          <!-- colocar todos los demás atributos -->
+          <hr>
+            <ng-container *ngIf="usuario!=undefined">
+                <div *ngIf="usuario.roles">
+                    <h6> Roles: </h6>   
+                    <ng-container *ngFor="let rol of usuario.roles">
+                        <span  class="badge badge-secondary mb-1"> {{ rol.rol }}</span>
+                        <br>
+                    </ng-container>                 
+                </div>
+            </ng-container>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn bg-gradient-primary">Save changes</button>
+          <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
