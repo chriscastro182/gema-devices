@@ -7,14 +7,17 @@ import { CreateUserComponent } from '../components/user/create-user/create-user.
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guards/auth-guard.guard';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [UserIndexComponent, CreateUserComponent],
+  declarations: [ CreateUserComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    UserIndexComponent,
     RouterModule.forChild(UserRoutes),
   ],
   providers: [AuthService, AuthGuard]
