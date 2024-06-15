@@ -28,7 +28,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FooterComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
     BrowserModule,
