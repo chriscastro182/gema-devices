@@ -16,11 +16,11 @@ router.post('/',
 router.get('/:userId', authJwt.verifyToken, userController.getUserById)
 
 router.delete('/:userId', 
-    [authJwt.verifyToken,authJwt.isAdmin, authJwt.isLead], 
+    [authJwt.verifyToken,authJwt.isAdmin], 
     userController.deleteUser)
 
 router.put('/:userId', 
-    [authJwt.verifyToken,authJwt.isAdmin, authJwt.isLead], 
+    [authJwt.verifyToken,authJwt.isAdmin], 
     userController.updateUserById)
 
 export default router 
