@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4  class="text-gradient text-primary text-gradient font-weight-bold text-uppercase">Editar Información de usuario</h4>
+          <h5 class="modal-title" id="exampleModalLabel">New message to</h5>
           <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -14,18 +14,14 @@
               <input type="text" class="form-control" name="nombre" [(ngModel)]="usuario.name" id="nombre-name">
             </div>
             <div class="form-group">
-              <label for="nombre-name" class="col-form-label">Apellido:</label>
-              <input type="text" class="form-control" name="apellido" [(ngModel)]="usuario.lastname" id="nombre-lastname">
-            </div>
-            <div class="form-group">
-              <label for="nombre-name" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" name="email" [(ngModel)]="usuario.email" id="nombre-email">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">Guardar</button>
+          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn bg-gradient-primary">Send message</button>
         </div>
       </div>
     </div>
