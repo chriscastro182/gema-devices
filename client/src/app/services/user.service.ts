@@ -23,6 +23,14 @@ export class UserService {
     );
     
   }
+  deleteUserById(id:any){
+    return this.http.delete(this.URL + '/' + id).pipe(
+      catchError((err) => {
+        console.error(err);
+        throw err;
+      })
+    )
+  }
   
 
 }
