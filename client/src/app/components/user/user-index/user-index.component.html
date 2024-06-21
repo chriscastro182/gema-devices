@@ -131,12 +131,10 @@
       <div class="col-12">
         <div class="card">
           <div class="offset-md-11 col-md-1 my-2">
-            <a [routerLink]="['/user/create']">
-              <button type="button" class="btn bg-gradient-success">
-                <i class="ni ni-fat-add"></i>
-              </button>
-            </a>
-            
+            <!-- En este botón colocar los toggle del modal y la fuinción para instanciar un usuario vacío -->
+            <button type="button" class="btn bg-gradient-success">
+              <i class="ni ni-fat-add"></i>
+            </button>            
          </div>
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
@@ -196,6 +194,8 @@
 
     <app-edit-modal [usuario]="User" 
     ></app-edit-modal>
+
+    <!-- Aquí va el modal de create-modal -->
 
   </div>
   <script>

@@ -82,4 +82,8 @@ export class UserIndexComponent {
     }
   }
 
+  openCreateModal(){
+    this.User = { name: "", lastname: "", email: "", createdAt: "23/04/18", roles:[{rol:"user", permissions:[]}]};
+  }
+
 }

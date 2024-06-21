@@ -44,7 +44,8 @@ export class LoginComponent {
               
           }
         },
-        err => {        
+        err => {       
+          console.error(err) 
           this.serverMessage = err.error.message;          
           this.loading=false;
           
