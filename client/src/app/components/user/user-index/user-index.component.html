@@ -132,7 +132,7 @@
         <div class="card">
           <div class="offset-md-11 col-md-1 my-2">
             <a [routerLink]="['/user/create']">
-              <button type="button" class="btn bg-gradient-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Agregar">
+              <button type="button" class="btn bg-gradient-success">
                 <i class="ni ni-fat-add"></i>
               </button>
             </a>
@@ -170,13 +170,13 @@
                     <td>
                       <div class="d-flex px-2 py-1">
                         
-                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Información">
+                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
                           <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
                         </button>
-                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
+                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
                           <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
                         </button>
-                        <button class="btn btn-icon btn-2 bg-gradient-danger" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar">
+                        <button class="btn btn-icon btn-2 bg-gradient-danger" type="button">
                           <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
                         </button>
                       </div>
