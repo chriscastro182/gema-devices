@@ -12,18 +12,19 @@
             <li class="list-group-item">Nombre: <b>{{ usuario?.name }}</b></li>
             <li class="list-group-item">Apellido: <b>{{ usuario?.lastname }}</b></li>
             <li class="list-group-item">Email: <b>{{ usuario?.email }}</b></li>
-            <li class="list-group-item">Fecha de Creación: <b>{{ usuario?.createdAt }}</b></li>
+            <li class="list-group-item">Fecha de Creación: <b>{{ usuario?.createdAt | date:'dd/MM/yyyy - h:mm a' }}</b></li>
             <li class="list-group-item"></li>
          </ul>
 
           <hr>
             <ng-container *ngIf="usuario!=undefined">
                 <div *ngIf="usuario.roles">
-                  <h6  class="text-gradient text-info text-dark font-weight-bold text-uppercase">Roles: </h6> 
-                    <ng-container *ngFor="let rol of usuario.roles">
-                        <span  class="badge bg-gradient-dark badge-md badge-pill mb-1"> {{ rol.rol }}</span>
-                        <br>
-                    </ng-container>                 
+                  <h6  class="text-gradient text-info text-dark font-weight-bold text-uppercase">Roles: </h6>   
+                  
+                  <ng-container *ngFor="let rol of usuario.roles">
+                    <span  class="badge bg-gradient-dark badge-md badge-pill mb-1"> {{ rol.rol }}</span>
+                    <br>
+                  </ng-container>                 
                 </div>
             </ng-container>
         </div>
