@@ -20,7 +20,6 @@ import { UserComponent } from './components/user/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { CreateModalComponent } from './components/user/create-modal/create-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { CreateModalComponent } from './components/user/create-modal/create-moda
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserComponent,
-    CreateModalComponent,
   ],
   imports: [
     BrowserModule,
