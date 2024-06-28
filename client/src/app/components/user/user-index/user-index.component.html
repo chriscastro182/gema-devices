@@ -132,8 +132,8 @@
         <div class="card">
           <div class="offset-md-11 col-md-1 my-2">
             <!-- En este botón colocar los toggle del modal y la fuinción para instanciar un usuario vacío -->
-            <button type="button" class="btn bg-gradient-success">
-              <i class="ni ni-fat-add"></i>
+            <button (click)="openCreateModal()" data-bs-toggle="modal" data-bs-target="#CreateModal" class="btn btn-icon btn-2 bg-gradient-success" type="button">
+              <i class="ni ni-fat-add"></i> <!-- Modal para agregar usuario -->
             </button>            
          </div>
           <div class="table-responsive">
@@ -172,7 +172,7 @@
                         <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
                           <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
                         </button>
-                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
+                        <button (click)="openEditModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
                           <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
                         </button>
                         <button (click)="ansDeleteUser(user._id)" class="btn btn-icon btn-2 bg-gradient-danger" type="button">
@@ -195,6 +195,8 @@
     <app-edit-modal [usuario]="User" 
     ></app-edit-modal>
 
+    <app-create-modal [usuario]="User"
+    ></app-create-modal>
     <!-- Aquí va el modal de create-modal -->
 
   </div>

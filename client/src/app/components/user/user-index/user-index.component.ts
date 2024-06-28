@@ -8,11 +8,12 @@ import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { CreateModalComponent } from '../create-modal/create-modal.component';
 
 @Component({
   selector: 'app-user-index',
   standalone:true,
-  imports: [CommonModule,InfoModalComponent, EditModalComponent, DeleteModalComponent, RouterModule],
+  imports: [CommonModule,InfoModalComponent, EditModalComponent, DeleteModalComponent, RouterModule, CreateModalComponent],
   templateUrl: './user-index.component.html',
   styleUrls: ['./user-index.component.css']
 })
@@ -53,7 +54,7 @@ export class UserIndexComponent {
         cancelButton: 'btn btn-secondary' // Clase personalizada para el botón de cancelar, si es necesario
       },
       buttonsStyling: false
-    }).then((result) => {
+    }).then((result:any) => {
       if (result.isConfirmed) { 
         this.deleteUserById(userId);
       } else if (result.isDenied) {
@@ -82,8 +83,15 @@ export class UserIndexComponent {
     }
   }
 
+  openEditModal(_id : string | undefined){
+    if (_id) {
+      let usuarioSeleccionado = this.Users?.find(u=>u._id == _id);
+      this.User	= usuarioSeleccionado != undefined ? usuarioSeleccionado : this.User;
+    }
+  }
+
   openCreateModal(){
-    this.User = { name: "", lastname: "", email: "", createdAt: "23/04/18", roles:[{rol:"user", permissions:[]}]};
+    this.User = { name: "", lastname: "", email: "", createdAt: new Date().toISOString(), roles:[{rol:"user", permissions:[]}]};
   }
 
 }
