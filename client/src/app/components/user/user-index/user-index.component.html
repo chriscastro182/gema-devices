@@ -149,7 +149,7 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let user of Users">
+                <ng-container *ngFor="let user of Users | async">
                   <tr>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-sm"> {{ user._id }} </span>
@@ -195,9 +195,12 @@
     <app-edit-modal [usuario]="User" 
     ></app-edit-modal>
 
-    <app-create-modal [usuario]="User"
-    ></app-create-modal>
     <!-- Aquí va el modal de create-modal -->
+    <app-create-modal 
+    [usuario]="User"
+    [Users]="Users"
+    (usersUpdated)="onUsersUpdated()"
+    ></app-create-modal>
 
   </div>
   <script>

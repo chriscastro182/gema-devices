@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
-
+  
 }
