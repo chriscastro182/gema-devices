@@ -16,8 +16,7 @@ import Swal from 'sweetalert2';
 export class CreateModalComponent {
 
   @Input() usuario : User = {name:'', lastname: '', email:'', roles:[{rol:'',permissions:[]}]};
-  @Input()
-  Users!: Observable<any>;
+
   @Output() usersUpdated = new EventEmitter<void>();
 
   
@@ -27,7 +26,7 @@ export class CreateModalComponent {
   }
 
   async createUser(){
-    console.log(this.usuario)
+    //console.log(this.usuario)
     delete this.usuario.roles;
 
     this.userService.createUser(this.usuario).subscribe({
@@ -35,7 +34,6 @@ export class CreateModalComponent {
         Swal.fire('¡Éxito!', 'Usuario creado correctamente', 'success');
 
         // función Refresh        
-        this.Users = this.userService.getUsers();
         this.usersUpdated.emit();
       }, error: (e) => {
         Swal.fire('¡Error!', `No se pudo crear el Usuario: ${e.error.message}`, 'error');

@@ -130,55 +130,52 @@
     <div class="row my-4">
       <div class="col-12">
         <div class="card">
-          <div class="offset-md-11 col-md-1 my-2">
+          <div class="offset-md-10 col-md-2 my-2">
             <!-- En este botón colocar los toggle del modal y la fuinción para instanciar un usuario vacío -->
-            <button (click)="openCreateModal()" data-bs-toggle="modal" data-bs-target="#CreateModal" class="btn btn-icon btn-2 bg-gradient-success" type="button">
-              <i class="ni ni-fat-add"></i> <!-- Modal para agregar usuario -->
+            <button (click)="openCreateModal()" data-bs-toggle="modal" data-bs-target="#CreateModal" class="btn bg-gradient-success" type="button">
+              <span class="btn-inner--icon">
+
+                <i class="ni ni-fat-add"></i> <!-- Modal para agregar usuario -->
+              </span>
+              Agregar usuario
             </button>            
          </div>
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Apellido</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Apellido</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acciones</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de creación</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <ng-container *ngFor="let user of Users | async">
                   <tr>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-sm"> {{ user._id }} </span>
-                    </td>
-                    <td>
                       <p class="text-sm text-secondary mb-0"> {{ user.name }}</p>
                     </td>
-                    <td>
+                    <td class="align-middle text-center text-sm">
                       <p class="text-sm text-secondary mb-0"> {{ user.lastname }}</p>
                     </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm"> {{ user.email }}</p>
+                    <td class="align-middle text-center">
+                      <p class="text-secondary mb-0 text-sm"> <b>{{ user.email }}</b></p>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-sm"> {{ user.createdAt }} </span>
+                      <span class="text-secondary text-sm"> {{ user.createdAt | date:'dd/MM/yyyy hh:mm:ss a' }} </span>
                     </td>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        
-                        <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
-                          <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
-                        </button>
-                        <button (click)="openEditModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
-                          <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
-                        </button>
-                        <button (click)="ansDeleteUser(user._id)" class="btn btn-icon btn-2 bg-gradient-danger" type="button">
-                          <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                        </button>
-                      </div>
+                    <td class="align-middle text-center">
+                      <button (click)="openInfoModal(user._id)" data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
+                        <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
+                      </button>
+                      <button (click)="openEditModal(user._id)" data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
+                        <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
+                      </button>
+                      <button (click)="ansDeleteUser(user._id)" class="btn btn-icon btn-2 bg-gradient-danger" type="button">
+                        <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                      </button>
                     </td>
                   </tr>
                 </ng-container>                
@@ -192,13 +189,14 @@
     <app-info-modal [usuario]="User"
     ></app-info-modal>
 
-    <app-edit-modal [usuario]="User" 
+    <app-edit-modal 
+    [usuario]="User"     
+    (usersUpdated)="onUsersUpdated()"
     ></app-edit-modal>
 
     <!-- Aquí va el modal de create-modal -->
     <app-create-modal 
     [usuario]="User"
-    [Users]="Users"
     (usersUpdated)="onUsersUpdated()"
     ></app-create-modal>
 

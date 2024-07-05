@@ -57,7 +57,9 @@ export const deleteUser = async (req, res) => {
 
 
 export const updateUserById = async (req, res) => {
-    req.body.password =  await User.encryptPass(req.body.password)
+    if (req.body.password) {
+        req.body.password =  await User.encryptPass(req.body.password)        
+    }
     
     const updatedUser = await User.findByIdAndUpdate(req.params.userId,
         req.body,
