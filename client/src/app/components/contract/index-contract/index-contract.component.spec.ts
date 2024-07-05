@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { IndexContractComponent } from './index-contract.component';
+
+describe('IndexContractComponent', () => {
+  let component: IndexContractComponent;
+  let fixture: ComponentFixture<IndexContractComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [IndexContractComponent]
+    });
+    fixture = TestBed.createComponent(IndexContractComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
