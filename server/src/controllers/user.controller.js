@@ -4,11 +4,12 @@ import Role from "../models/Role"
 export const createUser = async (req, res) => {
 
     const { name, lastname, password, email, empresa, roles } = req.body
+    let pass = password ? password : 'secret';
     const newUser = new User(
         {
             name,
             lastname,
-            password: await User.encryptPass(password),
+            password: await User.encryptPass(pass),
             email,
             empresa,
             roles
@@ -56,7 +57,9 @@ export const deleteUser = async (req, res) => {
 
 
 export const updateUserById = async (req, res) => {
-    req.body.password =  await User.encryptPass(req.body.password)
+    if (req.body.password) {
+        req.body.password =  await User.encryptPass(req.body.password)        
+    }
     
     const updatedUser = await User.findByIdAndUpdate(req.params.userId,
         req.body,

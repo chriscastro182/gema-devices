@@ -20,6 +20,8 @@ import { UserComponent } from './components/user/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { IndexContractComponent } from './components/contract/index-contract/index-contract.component';
+import { CreateContractComponent } from './components/contract/create-contract/create-contract.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserComponent,
+    IndexContractComponent,
+    CreateContractComponent,
   ],
   imports: [
     BrowserModule,

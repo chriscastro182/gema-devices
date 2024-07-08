@@ -10,7 +10,7 @@ import { authJwt, verifySignUp } from '../middlewares'
 router.get('/', authJwt.verifyToken, userController.getUsers)
 
 router.post('/',
-    [authJwt.verifyToken, verifySignUp.checkDuplicateUser,authJwt.isAdmin, authJwt.isLead],
+    [authJwt.verifyToken, verifySignUp.checkDuplicateUser,authJwt.isAdmin],
     userController.createUser)
 
 router.get('/:userId', authJwt.verifyToken, userController.getUserById)

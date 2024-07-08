@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CreateModalComponent } from '../create-modal/create-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-index',
@@ -18,29 +19,20 @@ import { CreateModalComponent } from '../create-modal/create-modal.component';
   styleUrls: ['./user-index.component.css']
 })
 export class UserIndexComponent {
-  Users:[User] | undefined;
+  //Users:[User] | undefined;
+  Users!: Observable<any[]>;
   User:User = {name:'', lastname: '', email:'', roles:[{rol:'',permissions:[]}]};
   infoBool:boolean = false;
 
   constructor(private userService:UserService, private authService:AuthService){
-    /* this.usuario = {_id:1, name: "Luis", lastname: "Castillo Vera", email: "soyjoto@gmail.com", createdAt: "23/04/18", roles:[]};
-    this.Users = [ this.usuario]; */
+    
   }
 
   async ngOnInit(){
-    await this.getAllUsers();
+    this.Users = this.userService.getUsers();
   }
-  async getAllUsers(){
-    await this.userService.getUsers().subscribe(
-      res => {
-        console.log(res)
-        this.Users = res;
-      },
-      err => {
-        console.log(err)
-        this.authService.getSessionBehavior(err.status);
-      }
-    );
+  onUsersUpdated() {
+    this.Users = this.userService.getUsers(); // Actualiza la lista de usuarios
   }
   ansDeleteUser(userId:any)
   {
@@ -68,7 +60,7 @@ export class UserIndexComponent {
         Swal.fire('¡Éxito!', 'Usuario eliminado correctamente', 'success');
 
         // función Refresh
-        this.getAllUsers();
+        this.Users = this.userService.getUsers();
       }, error: (e) => {
         Swal.fire('¡Error!', `No se pudo eliminar el Usuario: ${e.error.message}`, 'error');
 
@@ -78,15 +70,17 @@ export class UserIndexComponent {
   
   openInfoModal(_id : string | undefined){
     if (_id) {
-      let usuarioSeleccionado = this.Users?.find(u=>u._id == _id);
-      this.User	= usuarioSeleccionado != undefined ? usuarioSeleccionado : this.User;
+      this.Users.subscribe(
+        r => this.User = r.find(u=>u._id == _id)
+      );      
     }
   }
 
   openEditModal(_id : string | undefined){
     if (_id) {
-      let usuarioSeleccionado = this.Users?.find(u=>u._id == _id);
-      this.User	= usuarioSeleccionado != undefined ? usuarioSeleccionado : this.User;
+      this.Users.subscribe(
+        u =>  this.User = u.find(u=>u._id == _id)
+      );
     }
   }
 
