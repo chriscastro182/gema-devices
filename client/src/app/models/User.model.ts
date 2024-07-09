@@ -8,5 +8,5 @@ export interface User{
     password?:string;
     createdAt?:string;
     updatedAt?:string;
-    roles:[Rol];
+    roles?:[Rol];
 }
