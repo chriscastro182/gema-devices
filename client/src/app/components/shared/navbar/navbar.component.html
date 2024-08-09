@@ -98,6 +98,28 @@
             </ul>          
           </div>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#contractsExample">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal"> Contratos <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="contractsExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/contract/index']">
+                      <span class="sidenav-mini-icon text-xs"> C </span>
+                      <span class="sidenav-normal"> Contratos </span>
+                  </a>
+              </li>
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/contract/create']">
+                      <span class="sidenav-mini-icon text-xs"> N </span>
+                      <span class="sidenav-normal"> Nuevo Contrato </span>
+                  </a>
+              </li>
+            </ul>          
+          </div>
+        </li>
       </ul>
       <!-- <li class="nav-item ">
         <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#accountExample">

@@ -6,6 +6,7 @@ import { SmartHomeComponent } from './components/dashboard/smart-home/smart-home
 import { UserIndexComponent } from './components/user/user-index/user-index.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { IndexContractComponent } from './components/contract/index-contract/index-contract.component';
 
 const routes: Routes = [
   // Autenticacion
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'users', component: UserIndexComponent },
   { path: 'create-users', component: CreateUserComponent },
   { path: 'profile', component: ProfileComponent },
+  // Contratos
+  { path: 'contracts', component: IndexContractComponent },
 
   { path: '**', redirectTo: '/home' }
 ];
