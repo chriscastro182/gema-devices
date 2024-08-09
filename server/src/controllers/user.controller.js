@@ -3,7 +3,7 @@ import Role from "../models/Role"
 
 export const createUser = async (req, res) => {
 
-    const { name, lastname, password, email, empresa, roles } = req.body
+    const { name, lastname, password, email, empresa, roles } = req.body;
     let pass = password ? password : 'secret';
     const newUser = new User(
         {
