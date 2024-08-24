@@ -24,11 +24,7 @@ const userSchema = new Schema({
     ref: "Role",
     type: Schema.Types.ObjectId
   }]
-}, {
-  timestamps: true,
-  versionKey: false
-}
-);
+});
 
 userSchema.statics.encryptPass = async (password) => {
   const salt = await bcrypt.genSalt(11)

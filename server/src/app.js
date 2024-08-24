@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
+import contractRoutes from './routes/contract.routes'
 
 const app = express()
 //const cors = requre('cors')\
@@ -21,12 +22,13 @@ app.get('/', (req, res)=> {
         name: app.get('pkg').name,
         description: app.get('pkg').description,
         version: app.get('pkg').version,
-        author: app.get('pkg').name,
+        author: app.get('pkg').author,
     })
 })
 
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api/contracts',contractRoutes)
 
 
 export default app;

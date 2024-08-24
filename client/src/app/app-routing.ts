@@ -13,10 +13,10 @@ export const AppRoutes: Routes = [{
         children: [{
             path: '',
             loadChildren: () => import('./user/user.module').then(x=>x.UserModule)
-        }/* ,{
-            path: '',
-            loadChildren: () => import('./orders/orders.module').then(x=>x.OrdersModule)
         },{
+            path: '',
+            loadChildren: () => import('./contract/contract.module').then(x=>x.ContractModule)
+        }/* ,{
             path: '',
             loadChildren: () => import('./catalogos/catalogos.module').then(x=>x.CatalogosModule)
         } */]
