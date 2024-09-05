@@ -1,1 +1,66 @@
-<p>index-contract works!</p>
+<div class="row my-4">
+    <div class="col-12">
+      <div class="offset-md-10 col-md-2 my-2">
+        <!-- En este botón colocar los toggle del modal y la fuinción para instanciar un usuario vacío -->
+        <button data-bs-toggle="modal" data-bs-target="#CreateModal" class="btn bg-gradient-success" type="button">
+          <span class="btn-inner--icon">
+            <i class="ni ni-fat-add"></i> <!-- Modal para agregar usuario -->
+          </span>
+          Crear Contrato
+        </button>            
+     </div>        
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Folio</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Device</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Teléfono</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuario</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expiración</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let Contract of Contracts | async">
+                <tr>
+                  <td class="align-middle text-center">
+                    <p class="text-sm text-secondary mb-0"> {{ Contract.folio }}</p>
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <p class="text-sm text-secondary mb-0"> {{ Contract.device }}</p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <p class="text-secondary mb-0 text-sm"> <b>{{ Contract.phone }}</b></p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-sm"> {{ Contract.user }} </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-sm"> {{ Contract.expiresDate}} </span>
+                  </td>
+
+                  <td class="align-middle text-center">
+                    <button data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
+                      <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
+                      <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
+                    </button>
+                    <button class="btn btn-icon btn-2 bg-gradient-danger" type="button">
+                      <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>                
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-create-contract-modal
+    (contractsUpdated)="onContractsUpdated()"
+  ></app-create-contract-modal>

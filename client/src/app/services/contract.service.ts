@@ -38,5 +38,5 @@ export class ContractService {
       })
     ) 
   }
-
+// aqui van las funciones :D
 }

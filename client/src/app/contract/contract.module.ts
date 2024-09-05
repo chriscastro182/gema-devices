@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ContractRoutes } from './contract.routing';
 import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guards/auth-guard.guard';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,6 +12,7 @@ import { AuthGuard } from '../guards/auth-guard.guard';
   declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(ContractRoutes),
   ],
   providers: [AuthService, AuthGuard]
