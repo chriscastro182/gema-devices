@@ -42,14 +42,14 @@
                   </td>
 
                   <td class="align-middle text-center">
-                    <button data-bs-toggle="modal" data-bs-target="#modal-info" class="btn btn-icon btn-2 bg-gradient-info" type="button">
-                      <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
+                    <button (click)="openInfoModal(Contract._id)" data-bs-toggle="modal" data-bs-target="#modal-info-contract" class="btn btn-icon btn-2 bg-gradient-info" type="button">
+                      <span class="btn-inner-icon"><i class="ni ni-circle-08"></i></span>
                     </button>
-                    <button data-bs-toggle="modal" data-bs-target="#EditModal" class="btn btn-icon btn-2 bg-gradient-primary" type="button">
-                      <span class="btn-inner--icon"><i class="ni ni-settings"></i></span>
+                    <button (click)="openEditModal(Contract._id)" data-bs-toggle="modal" data-bs-target="#edit-modal-contract"  class="btn btn-icon btn-2 bg-gradient-primary" type="button">
+                      <span class="btn-inner-icon"><i class="ni ni-settings"></i></span>
                     </button>
                     <button class="btn btn-icon btn-2 bg-gradient-danger" type="button">
-                      <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                      <span class="btn-inner-icon"><i class="ni ni-fat-delete"></i></span>
                     </button>
                   </td>
                 </tr>
@@ -64,3 +64,12 @@
   <app-create-contract-modal
     (contractsUpdated)="onContractsUpdated()"
   ></app-create-contract-modal>
+  <!-- Info Modal -->
+  <app-info-contract-modal [contract]="Contract">    
+  </app-info-contract-modal>
+
+  <!-- Edit Modal -->
+   <app-edit-contract-modal 
+   [contract]="Contract"
+   (contractUpdated)="onContractsUpdated()">    
+   </app-edit-contract-modal>

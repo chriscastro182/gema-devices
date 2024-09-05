@@ -38,5 +38,33 @@ export class ContractService {
       })
     ) 
   }
-// aqui van las funciones :D
+
+  // Update contracts
+  updateContract(contract: Contract): Observable<Contract>{
+    
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(contract);
+
+    const contractId = contract._id;
+    const urlComplete = this.URL + '/' + contractId;
+
+    return this.http.put<Contract>( urlComplete, body, { 'headers': headers })
+      .pipe(
+        catchError( (err)=>{
+          console.error(err);
+          throw err;
+        })
+      )
+  }
+
+  // Delete contracts
+  deleteContractById(contractId: string){
+    const urlComplete = this.URL + '/' + contractId;
+    return this.http.delete(urlComplete).pipe(
+      catchError( (err)=>{
+        console.error(err);
+        throw err;
+      })
+    )
+  }
 }

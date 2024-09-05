@@ -1,0 +1,32 @@
+<div class="modal fade" id="edit-modal-contract" tabindex="-1" role="dialog" aria-labelledby="edit-modal-contractTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4  class="text-gradient text-primary text-gradient font-weight-bold text-uppercase">Editar Información de usuario</h4>
+          <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="folio" class="col-form-label">Folio:</label>
+              <input type="text" class="form-control" name="folio" [(ngModel)]="contract.folio" id="folio">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Teléfono:</label>
+              <input type="phone" class="form-control" name="phone" [(ngModel)]="contract.phone" id="phone">
+            </div>
+            <div class="form-group">
+              <label for="usuario" class="col-form-label">Usuario:</label>
+              <input type="text" class="form-control" name="usuario" [(ngModel)]="contract.user" id="usuario">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">Cerrar</button>
+          <button (click)="updateContract()" type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">Actualizar</button>
+        </div>
+      </div>
+    </div>
+</div>
